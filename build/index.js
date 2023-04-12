@@ -1,4 +1,3 @@
-"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -12,6 +11,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 const fetchBtn = document.getElementById('fetch-btn');
 const jokeWrapper = document.getElementById('joke-wrapper');
 const p = document.createElement('p');
+const btnWrapper = document.querySelector('.btn-wrapper');
+// const scoreButtons = document.querySelectorAll('.score-btn');
+let joke = '';
+// Array of Reports
+const d = new Date().toISOString();
+const reportJokes = [
+    {
+        joke: '',
+        score: null,
+        date: '',
+    },
+];
+// API's Variables
 const API_URL = 'https://icanhazdadjoke.com/';
 const HEADER = {
     method: 'GET',
@@ -20,16 +32,36 @@ const HEADER = {
     },
 };
 const ERROR = 'Sorry, we were not able to resolve your request. Please, check for any typos and try again';
+// Fetch jokes from API
 function getJokes() {
     return __awaiter(this, void 0, void 0, function* () {
         yield fetch(API_URL, HEADER)
             .then(res => res.json())
             .then(data => {
-            console.log(data);
+            // console.log(data);
+            // Print jokes
             p.textContent = `${data.joke}`;
-            jokeWrapper === null || jokeWrapper === void 0 ? void 0 : jokeWrapper.appendChild(p);
+            // Print Buttons
+            jokeWrapper.appendChild(p);
+            // Get access to the joke from outside the fetch
+            joke = data.joke;
+            return joke;
         })
             .catch(() => alert(ERROR));
+        btnWrapper.classList.remove('hidden');
+        //
+        const newJoke = {
+            joke: joke,
+            score: null,
+            date: d,
+        };
+        reportJokes.push(newJoke);
+        console.log(reportJokes);
     });
+}
+function getScore(id) {
+    const jokeIndex = reportJokes.length - 1;
+    reportJokes[jokeIndex].score = id;
+    console.log(reportJokes);
 }
 fetchBtn === null || fetchBtn === void 0 ? void 0 : fetchBtn.addEventListener('click', getJokes);
