@@ -32,10 +32,15 @@ const HEADER = {
     },
 };
 const ERROR = 'Sorry, we were not able to resolve your request. Please, check for any typos and try again';
+const API_URL2 = 'https://v2.jokeapi.dev/joke/Programming?type=single';
 // Fetch jokes from API
 function getJokes() {
     return __awaiter(this, void 0, void 0, function* () {
-        yield fetch(API_URL, HEADER)
+        // Randomize the API to fetch data from
+        const randomNumber = Math.floor(Math.random() * 10 + 1);
+        const randomApi = randomNumber % 2 ? API_URL : API_URL2;
+        // Fetch
+        yield fetch(randomApi, HEADER)
             .then(res => res.json())
             .then(data => {
             // console.log(data);
