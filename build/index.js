@@ -12,6 +12,13 @@ const fetchBtn = document.getElementById('fetch-btn');
 const jokeWrapper = document.getElementById('joke-wrapper');
 const p = document.createElement('p');
 const btnWrapper = document.querySelector('.btn-wrapper');
+const container = document.querySelector('.container');
+const firstBlob = document.querySelector('.first-blob');
+const secondBlob = document.querySelector('.second-blob');
+//======== BLOBS ========//
+container.style.backgroundImage = "url('./src/svgs/blob-1.svg')";
+firstBlob.style.backgroundImage = "url('./src/svgs/blob-7.svg')";
+secondBlob.style.backgroundImage = "url('./src/svgs/blob-5.svg')";
 //======== JOKES HANDLING ========//
 let joke = '';
 // Array of Reports
@@ -38,7 +45,13 @@ function getJokes() {
     return __awaiter(this, void 0, void 0, function* () {
         // Randomize the API to fetch data from
         const randomNumber = Math.floor(Math.random() * 10 + 1);
+        const randomNumberTwo = Math.floor(Math.random() * 10 + 1);
+        ;
         const randomApi = randomNumber % 2 ? API_URL : API_URL2;
+        // Change blobs
+        container.style.backgroundImage = `url('./src/svgs/blob-${randomNumber}.svg')`;
+        firstBlob.style.backgroundImage = `url('./src/svgs/blob-${randomNumberTwo}.svg')`;
+        secondBlob.style.backgroundImage = `url('./src/svgs/blob-${randomNumberTwo}.svg')`;
         // Fetch
         yield fetch(randomApi, HEADER)
             .then(res => res.json())
@@ -83,7 +96,7 @@ navigator.geolocation.getCurrentPosition(position => {
         const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
         document.getElementById('weather-wrapper').innerHTML = `
           <div class="flex-container">
-            <img src=${iconUrl} />
+            <img class="weather-img" src=${iconUrl} />
             <p class="weather-temp">| ${Math.round(data.main.temp)}ºC</p>
           </div>
       `;

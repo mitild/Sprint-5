@@ -7,24 +7,27 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700;900&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/e4599235b3.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="./index.css">
   <title>Acudits - Antistress Jokes</title>
 </head>
 <body>
   <div id="weather-wrapper"> <!-- JS --> </div>
+  <div class="blobs first-blob"></div>
   <div class="container">
     <h2>Preparat per riure? 🤪</h2>
   
     <div id="joke-wrapper"> <!-- JS --> </div>
 
     <div class="btn-wrapper hidden">
-      <button type="button" class="score-btn" onclick="getScore(1)">1</button>
-      <button type="button" class="score-btn" onclick="getScore(2)">2</button>
-      <button type="button" class="score-btn" onclick="getScore(3)">3</button>
+      <button type="button" class="score-btn" onclick="getScore(1)"><i class="fa-regular fa-face-sad-tear fa-3x prueba"></i></button>
+      <button type="button" class="score-btn" onclick="getScore(2)"><i class="fa-regular fa-face-meh fa-3x prueba"></i></button>
+      <button type="button" class="score-btn" onclick="getScore(3)"><i class="fa-regular fa-face-grin-squint fa-3x prueba"></i></button>
     </div>
 
     <button type="button" id="fetch-btn">Següent acudit</button>
   </div>
+  <div class="blobs second-blob"></div>
   <script src="./build/index.js"></script>
 </body>
 </html>

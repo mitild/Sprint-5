@@ -15,17 +15,30 @@ image {
 body {
   font-family: 'Inter', sans-serif;
   height: 100vh;
-  background: linear-gradient(rgb(253,    220,    228,    0.9), rgb(253, 240, 228, 0.9)), url('./src/images/priscilla-du-preez-XkKCui44iM0-unsplash.jpg');
+  /* background: linear-gradient(rgb(253,    220,    228,    0.9), rgb(253, 240, 228, 0.9)), url('./src/images/priscilla-du-preez-XkKCui44iM0-unsplash.jpg');
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
+  background-color: whitesmoke;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; exercise 6 takeover */
   justify-content: center;
   align-items: center;
 }
 
+h2 {
+  color: whitesmoke;
+  font-size: 2rem;
+}
+
+p {
+  font-size: 1.1rem;
+}
+
 button {
+  cursor: pointer;
+}
+/* button {
   cursor: pointer;
   padding: 1em 2em;
   border-radius: 5px;
@@ -38,8 +51,9 @@ button:hover,
 button:active {
   box-shadow: 4px 4px 0 black;
   border: 2px solid black;
-  background-color: #FDF0E4;
-}
+  background-color: #FDF0E4; 
+} 
+exercise 6 takeover */
 
 /* ===================== 
 JOKES
@@ -50,15 +64,19 @@ JOKES
   justify-content: center;
   align-items: center;
   gap: 1.5em;
-  background-color: whitesmoke;
-  width: 40%;
-  min-width: 450px;
-  height: 30%;
-  min-height: 350px;
+  /* background-color: whitesmoke; exercise 6 takeover */
+  width: 70%;
+  /* min-width: 750px;*/
+  height: 100%;
+  /* min-height: 750px; */
   padding: 3em;
-  border-radius: 10px;
+  /* border-radius: 10px;
   border: 2px solid black;
-  box-shadow: 14px 14px 0 black;
+  box-shadow: 14px 14px 0 black; exercise 6 takeover */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 1;
 }
 
 #joke-wrapper {
@@ -67,6 +85,11 @@ JOKES
   justify-content: center;
   align-items: center;
   gap: 2em;
+  color: whitesmoke;
+}
+
+#joke-wrapper p {
+  width: 40%;
 }
 
 .hidden {
@@ -75,6 +98,20 @@ JOKES
 
 .score-btn {
   padding: .7em 1em;
+}
+
+.blobs {
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 5em;
+}
+
+.second-blob {
+  margin-top: 20em;
+}
+
+.first-blob {
+  margin-bottom: 20em;
 }
 
 /* ===================== 
@@ -88,11 +125,75 @@ div#weather-wrapper {
 
 p.weather-temp {
   font-size: 1.7rem;
+  text-shadow: 0px 0px 20px #807e7e;
+}
+
+.weather-img {
+  text-shadow: 0px 0px 20px #807e7e;
 }
 
 .flex-container {
   display: flex;
   align-items: center;
+}
 
+/* ===================== 
+BUTTONS 
+===================== */
+#fetch-btn {
+  padding: 1em 2em;
+  border-radius: 25px;
+  outline: 0;
+  border: 3px solid black;
+  cursor: pointer;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+  font-weight: 600;
+}
+
+#fetch-btn:after {
+  content: "";
+  background-color: #ffe54c;
+  border-radius: 20px;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  height: 110%;
+  top: 4px;
+  left: 6px;
+  transition: 0.2s;
+}
+
+#fetch-btn:hover:after {
+  top: 0px;
+  left: 0px;
+  height: 100%;
+}
+
+.score-btn {
+  border: none;
+  background-color: transparent;
+}
+
+.prueba {
+  position: relative;
+}
+
+.prueba:after {
+  content: "";
+  background-color: #ffe54c;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  z-index: -1;
+  transition: 0.2s;
+}
+
+.prueba:hover:after {
+  top: 0px;
+  left: 0px;
 }
 

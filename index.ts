@@ -3,6 +3,14 @@ const fetchBtn: HTMLElement | null = document.getElementById('fetch-btn');
 const jokeWrapper: HTMLElement | null = document.getElementById('joke-wrapper');
 const p = document.createElement('p');
 const btnWrapper: HTMLElement | null = document.querySelector('.btn-wrapper');
+const container: HTMLElement | null = document.querySelector('.container');
+const firstBlob: HTMLElement | null = document.querySelector('.first-blob');
+const secondBlob: HTMLElement | null = document.querySelector('.second-blob');
+
+//======== BLOBS ========//
+container.style.backgroundImage = "url('./src/svgs/blob-1.svg')";
+firstBlob.style.backgroundImage = "url('./src/svgs/blob-7.svg')";
+secondBlob.style.backgroundImage = "url('./src/svgs/blob-5.svg')";
 
 //======== JOKES HANDLING ========//
 
@@ -45,8 +53,14 @@ const API_URL2 = 'https://v2.jokeapi.dev/joke/Programming?type=single';
 // Fetch jokes from API
 async function getJokes() {
   // Randomize the API to fetch data from
-  const randomNumber: number = Math.floor(Math.random() * 10 + 1);
+  const randomNumber: number = Math.floor(Math.random() * 10 + 1)
+  const randomNumberTwo: number = Math.floor(Math.random() * 10 + 1);;
   const randomApi: string = randomNumber % 2 ? API_URL : API_URL2;
+
+  // Change blobs
+  container.style.backgroundImage = `url('./src/svgs/blob-${randomNumber}.svg')`;
+  firstBlob.style.backgroundImage = `url('./src/svgs/blob-${randomNumberTwo}.svg')`;
+  secondBlob.style.backgroundImage = `url('./src/svgs/blob-${randomNumberTwo}.svg')`;
   // Fetch
   await fetch(randomApi, HEADER)
     .then(res => res.json())
@@ -101,7 +115,7 @@ navigator.geolocation.getCurrentPosition(position => {
       const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
       document.getElementById('weather-wrapper').innerHTML = `
           <div class="flex-container">
-            <img src=${iconUrl} />
+            <img class="weather-img" src=${iconUrl} />
             <p class="weather-temp">| ${Math.round(data.main.temp)}ºC</p>
           </div>
       `;
