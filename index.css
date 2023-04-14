@@ -73,3 +73,22 @@ button:focus {
 .score-btn {
   padding: .7em 1em;
 }
+
+div#weather-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+
+
+p.weather-temp {
+  font-size: 1.7rem;
+}
+
+.flex-container {
+  display: flex;
+  align-items: center;
+
+}
+

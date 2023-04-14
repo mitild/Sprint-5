@@ -3,7 +3,8 @@ const fetchBtn: HTMLElement | null = document.getElementById('fetch-btn');
 const jokeWrapper: HTMLElement | null = document.getElementById('joke-wrapper');
 const p = document.createElement('p');
 const btnWrapper: HTMLElement | null = document.querySelector('.btn-wrapper');
-// const scoreButtons = document.querySelectorAll('.score-btn');
+
+//======== JOKES HANDLING ========//
 
 let joke = '';
 
@@ -78,3 +79,27 @@ function getScore(id: number): any {
 }
 
 fetchBtn?.addEventListener('click', getJokes);
+
+//======== WEATHER API ========//
+
+navigator.geolocation.getCurrentPosition(position => {
+  fetch(
+    `https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric`
+  )
+    .then(res => {
+      if (!res.ok) {
+        throw Error('Weather data not available');
+      }
+      return res.json();
+    })
+    .then(data => {
+      const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+      document.getElementById('weather-wrapper').innerHTML = `
+          <div class="flex-container">
+            <img src=${iconUrl} />
+            <p class="weather-temp">| ${Math.round(data.main.temp)}ºC</p>
+          </div>
+      `;
+    })
+    .catch(err => console.error(err));
+});
